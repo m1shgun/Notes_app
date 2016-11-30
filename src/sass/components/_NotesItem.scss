@@ -1,0 +1,66 @@
+.notes-item {
+  position: relative;
+  width: 230px;
+  height: 230px;
+  margin: 5px;
+  background: gold;
+  padding: 25px 20px 20px 20px;
+  overflow: hidden;
+}
+
+.notes-item__date {
+  color: #6e6e6e;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  div {
+    font-family: 'Bad Script', cursive;
+    font-weight: bold;
+    font-size: .8em;
+    display: inline-block;
+  }
+}
+
+.notes-item__delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  background: url('../img/trash.png') no-repeat;
+  background-size: cover;
+}
+
+.notes-item__text {
+  margin-top: 5px;
+  overflow-y: auto;
+  height: 185px;
+  font-family: 'Bad Script', cursive;
+  font-size: 1em;
+  font-weight: bold;
+  color: $dark-grey-color;
+}
+
+@media screen and (min-width: 1025px)  {
+  .settings__color {
+    transition: transform .1s ease;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+  .notes-input__button {
+    transition: all .1s ease;
+    &:hover {
+      background-color: #fff;
+      color: #827f7c;
+      border: 1px solid #827f7c;
+    }
+  }
+  .notes-items__item {
+    transition: box-shadow .1s ease;
+    &:hover {
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+  }
+}

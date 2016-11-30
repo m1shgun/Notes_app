@@ -1,0 +1,68 @@
+.field {
+  margin:auto;
+  max-width: $field-max-width;
+  position: relative;
+  background-color: $white-color;
+  border-radius: 10px;
+  box-shadow: $base-box-shadow;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.field__input {
+  width: 100%;
+  border: 0;
+  font-size:1.2em;
+  padding: 20px;
+  border-top: {
+    left-radius: 10px;
+    right-radius: 10px;
+  }
+  border-bottom: $border;
+}
+
+.field__input:focus {
+  outline: none;
+}
+
+.field__block {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  padding: 20px;
+}
+
+.field__buttons {
+  display: flex;
+  width: 50%;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.field__button {
+  width: 130px;
+  padding: 5px;
+  align-self: flex-end;
+  cursor: pointer;
+  border-radius: 6px;
+  background-color: rgb(131, 146, 219);
+  color: #fff;
+  border: 0;
+  box-shadow: 0 5px 0 rgb(93, 104, 159);
+  font-size: 1em;
+  font-weight: bold;
+  user-select: none;
+  &:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 rgb(93, 104, 159);
+  }
+  &:focus {
+    outline: none;
+  }
+  &:first-child {
+    margin-right: 10px;
+  }
+}

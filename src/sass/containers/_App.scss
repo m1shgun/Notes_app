@@ -1,0 +1,17 @@
+.app {
+  padding: 20px;
+  transition: all $transition-one;
+}
+
+.app__title {
+  margin-bottom: 10px;
+  color: $white-color;
+  text-align: center;
+  font-size: 3em;
+  font-weight: bold;
+  font-family: $title-font-family;
+}
+
+.app__content {
+
+}
