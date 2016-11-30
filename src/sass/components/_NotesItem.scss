@@ -26,10 +26,11 @@
   top: 10px;
   right: 10px;
   cursor: pointer;
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   background: url('../img/trash.png') no-repeat;
   background-size: cover;
+
 }
 
 .notes-item__text {
@@ -40,6 +41,15 @@
   font-size: 1em;
   font-weight: bold;
   color: $dark-grey-color;
+}
+
+@media screen and (min-width: $breakpoint-four) {
+  .notes-item__delete {
+    transition: transform $transition-three;
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
 }
 
 @media screen and (min-width: 1025px)  {

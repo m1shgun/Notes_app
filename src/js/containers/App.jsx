@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import * as notesActions from '../redux/actions/notesActions';
+import * as colorActions from '../redux/actions/colorActions';
 import Search from '../components/Search.jsx';
 import Field from '../components/Field.jsx';
 import NotesList from '../components/NotesList.jsx';
@@ -11,20 +12,31 @@ class App extends Component {
 
     static propTypes = {
         notes: PropTypes.array.isRequired,
-        notesActions: PropTypes.object.isRequired
+        color: PropTypes.string.isRequired,
+        notesActions: PropTypes.object.isRequired,
+        colorActions: PropTypes.object.isRequired
     };
 
     render() {
-        const {notes} = this.props;
+        const {notes, color} = this.props;
         const {addNote, deleteNote, deleteAll} = this.props.notesActions;
+        const {changeColor} = this.props.colorActions;
 
         return (
             <div className="app">
                 <h1 className="app__title">Notes</h1>
                 <div className="app__content">
                     <Search />
-                    <Field />
-                    <NotesList />
+                    <Field
+                        onNoteAdd={addNote}
+                        onAllDelete={deleteAll}
+                        onColorChange={changeColor}
+                        color={color}
+                    />
+                    <NotesList
+                        notes={notes}
+                        onNoteDelete={deleteNote}
+                    />
                 </div>
                 {
                     NODE_ENV === 'development' ? <DevTools /> : null
@@ -36,13 +48,15 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        notes: state.notes
+        notes: state.notes,
+        color: state.color
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        notesActions: bindActionCreators(notesActions, dispatch)
+        notesActions: bindActionCreators(notesActions, dispatch),
+        colorActions: bindActionCreators(colorActions, dispatch)
     };
 };
 

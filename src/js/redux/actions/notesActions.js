@@ -4,15 +4,18 @@ import {
     DELETE_ALL
 } from '../constants/notes';
 
-export const addNote = () => {
+export const addNote = (text, color) => {
     return {
-        type: ADD_NOTE
+        type: ADD_NOTE,
+        text,
+        color
     }
 };
 
-export const deleteNote = () => {
+export const deleteNote = (id) => {
     return {
-        type: DELETE_NOTE
+        type: DELETE_NOTE,
+        id
     }
 };
 

@@ -16,7 +16,7 @@ const notes = (state = initialState, action) => {
             notes.push({
                 id: ++count,
                 text: action.text,
-                color: 'rgb(255, 255, 141)'
+                color: action.color
             });
 
             return [...notes]

@@ -4,3 +4,9 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+.notes-list__empty {
+  padding: 10px 20px;
+  background: $white-color;
+  border-radius: 10px;
+}
