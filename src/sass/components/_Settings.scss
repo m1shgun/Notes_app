@@ -43,3 +43,10 @@
 .seven {
   background: $settings-color-seven;
 }
+
+@media screen and (max-width: $breakpoint-three) {
+  .settings {
+    width: 100%;
+    justify-content: center;
+  }
+}

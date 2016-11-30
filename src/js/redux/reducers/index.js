@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import sample from './sample'
+import notes from './notes'
 
 
 export default combineReducers({
-    sample
+    notes
 })

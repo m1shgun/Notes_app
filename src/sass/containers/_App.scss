@@ -15,3 +15,9 @@
 .app__content {
 
 }
+
+@media screen and (max-width: $breakpoint-two) {
+  .app {
+    padding: 20px 0;
+  }
+}

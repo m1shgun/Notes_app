@@ -66,3 +66,22 @@
     margin-right: 10px;
   }
 }
+
+@media screen and (max-width: $breakpoint-two) {
+  .field {
+    box-shadow: none;
+  }
+}
+
+@media screen and (max-width: $breakpoint-three) {
+  .field__block {
+    flex-direction: column;
+  }
+
+  .field__buttons {
+    margin-top: 20px;
+    width: 100%;
+    justify-content: center;
+  }
+}
+

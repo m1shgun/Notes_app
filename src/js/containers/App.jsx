@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
-import * as actions from '../redux/actions/actions';
+import * as notesActions from '../redux/actions/notesActions';
 import Search from '../components/Search.jsx';
 import Field from '../components/Field.jsx';
 import NotesList from '../components/NotesList.jsx';
@@ -10,12 +10,13 @@ import DevTools from '../redux/utils/devtools';
 class App extends Component {
 
     static propTypes = {
-        sample: PropTypes.number.isRequired
+        notes: PropTypes.array.isRequired,
+        notesActions: PropTypes.object.isRequired
     };
 
     render() {
-        const {sample} = this.props;
-        const {actionOne, actionTwo} = this.props.actions;
+        const {notes} = this.props;
+        const {addNote, deleteNote, deleteAll} = this.props.notesActions;
 
         return (
             <div className="app">
@@ -35,13 +36,13 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        sample: state.sample
+        notes: state.notes
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators(actions, dispatch)
+        notesActions: bindActionCreators(notesActions, dispatch)
     };
 };
 
