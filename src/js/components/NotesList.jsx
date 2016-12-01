@@ -2,7 +2,7 @@ import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import NotesItem from './NotesItem.jsx';
 
-const NotesList = ({notes, onNoteDelete}) => {
+const NotesList = ({notes, search, onNoteDelete}) => {
 
     return (
         <div className="notes-list">
@@ -28,7 +28,7 @@ const NotesList = ({notes, onNoteDelete}) => {
                             />
                         )
                     })
-                    : <div className="notes-list__empty">Пусто...</div>
+                    : <div className="notes-list__empty">{!search ? 'Пусто...' : 'Не найдено...'}</div>
             }
             </ReactCSSTransitionGroup>
         </div>

@@ -1,10 +1,13 @@
 import React from 'react';
 
-const Search = ({notes, onSearchChange}) => {
+const Search = ({notes, search, onSearchChange, onNotesSearch}) => {
 
     const handleInputChange = (e) => {
-        if (e.target.value !== '') {
+        const value = e.target.value;
+
+        if (value !== '') {
             onSearchChange(true);
+            onNotesSearch(value);
         } else {
             onSearchChange(false);
         }
@@ -12,13 +15,13 @@ const Search = ({notes, onSearchChange}) => {
 
     return (
         <div className="search">
-            <div className="search__icon" />
             <input
                 className="search__field"
                 type="text" placeholder="Поиcк..."
-                disabled={notes.length > 0 ? '' : 'disabled'}
+                disabled={notes.length > 0 || search ? '' : 'disabled'}
                 onChange={handleInputChange}
             />
+            <div className="search__icon" />
         </div>
     )
 };

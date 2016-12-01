@@ -20,7 +20,8 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            search:false
+            newNotes: [],
+            search: false
         }
     }
 
@@ -30,35 +31,62 @@ class App extends Component {
         })
     }
 
+    handleNotesSearch(value) {
+        const {notes} = this.props;
+
+        this.setState({
+            newNotes: notes.filter(note => note.text.indexOf(value) !== -1)
+        });
+    }
+
+    handleNoteDelete(id) {
+        const {deleteNote} = this.props.notesActions;
+        const {search} = this.state;
+        deleteNote(id);
+
+        if (search) {
+            const {notes} = this.props;
+            const search = this.content.querySelector('.search__field');
+            const newNotes = notes.filter(note => note.id !== id);
+
+            this.setState({
+                newNotes: newNotes.filter(note => note.text.indexOf(search.value) !== -1)
+            });
+        }
+    }
+
     render() {
         const {notes, color} = this.props;
-        const {addNote, deleteNote, deleteAll} = this.props.notesActions;
+        const {addNote, deleteAll} = this.props.notesActions;
         const {changeColor} = this.props.colorActions;
-        const {search} = this.state;
+        const {newNotes, search} = this.state;
 
         return (
             <div className="app">
-                <h1 className="app__title">Notes</h1>
-                <div className="app__content">
+                <h1 className="app__title">NOTES</h1>
+                <div className="app__content" ref={ref => { this.content = ref; }}>
                     <Search
                         notes={notes}
+                        search={search}
                         onSearchChange={::this.handleSearchChange}
+                        onNotesSearch={::this.handleNotesSearch}
                     />
                     {
                         !search ?
                         <Field
+                            color={color}
+                            notes={notes}
                             onNoteAdd={addNote}
                             onAllDelete={deleteAll}
                             onColorChange={changeColor}
-                            color={color}
-                            notes={notes}
                         />
                         : null
                     }
 
                     <NotesList
-                        notes={notes}
-                        onNoteDelete={deleteNote}
+                        search={search}
+                        notes={!search ? notes : newNotes}
+                        onNoteDelete={::this.handleNoteDelete}
                     />
                 </div>
                 {

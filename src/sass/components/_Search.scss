@@ -12,11 +12,13 @@
   background: url('../img/search.png') no-repeat;
   background-size: cover;
   top: 6px;
-  left: 6px;
+  left: 34px;
+  transition: left $transition-two;
 }
 
 .search__field {
-  width: 100%;
+  margin: auto;
+  width: 80%;
   background-color: $white-color;
   border-radius: 10px;
   display: flex;
@@ -25,10 +27,18 @@
   font-size:1em;
   color: $dark-grey-color;
   box-shadow: $base-box-shadow;
+  transition: width $transition-two;
   &[disabled] {
     opacity: .5;
   }
   &:focus {
     outline: none;
+    width: 100%;
+    + .search__icon {
+      left: 6px;
+    }
+  }
+  &::-ms-clear {
+    display: none;
   }
 }

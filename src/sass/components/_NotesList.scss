@@ -1,6 +1,7 @@
 .notes-list {
   padding: 20px 20px 0 20px;
   span {
+    position: relative;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -8,6 +9,10 @@
 }
 
 .notes-list__empty {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
   padding: 10px 20px;
   background: $white-color;
   border-radius: 10px;

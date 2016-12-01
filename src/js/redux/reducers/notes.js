@@ -13,7 +13,7 @@ const notes = (state = initialState, action) => {
 
         case ADD_NOTE: {
             let notes = [...state];
-            notes.push({
+            notes.unshift({
                 id: ++count,
                 text: action.text,
                 color: action.color,

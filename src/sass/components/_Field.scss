@@ -15,17 +15,35 @@
   width: 100%;
   border: 0;
   font-size:1.2em;
-  padding: 20px;
+  padding: 20px 50px 20px 20px;
   color: $dark-grey-color;
   border-top: {
     left-radius: 10px;
     right-radius: 10px;
   }
   border-bottom: $border;
+  &:focus {
+    outline: none;
+  }
+  &::-ms-clear {
+    display: none;
+  }
 }
 
-.field__input:focus {
-  outline: none;
+.field__clear-button {
+  display: none;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 20px;
+  top: 21px;
+  background: url('../../img/del.png') no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  border-radius: 50%;
+  &.show {
+    display: block;
+  }
 }
 
 .field__block {
@@ -83,6 +101,15 @@
     margin-top: 20px;
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media screen and (min-width: $breakpoint-four) {
+  .field__clear-button {
+    transition: transform .3s ease;
+    &:hover {
+      transform: rotate(180deg);
+    }
   }
 }
 

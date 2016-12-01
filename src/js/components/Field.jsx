@@ -3,6 +3,13 @@ import Settings from './Settings.jsx';
 
 class Field extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            showClear: false
+        }
+    }
+
     componentDidMount() {
         this._inputFocus();
     }
@@ -19,6 +26,7 @@ class Field extends Component {
 
             onNoteAdd(input.value, color);
             input.value = '';
+            this._setShowClear(false);
         }
 
         input.focus();
@@ -32,6 +40,7 @@ class Field extends Component {
 
             onNoteAdd(input.value, color);
             input.value = '';
+            this._setShowClear(false);
         }
 
         input.focus();
@@ -43,9 +52,28 @@ class Field extends Component {
             const input = this.input;
 
             onAllDelete();
-            input.value = '';
             input.focus();
         }
+    }
+
+    handleValueCheck(e) {
+        if (e.target.value !== '') {
+            this._setShowClear(true);
+        } else {
+            this._setShowClear(false);
+        }
+    }
+
+    handleInputClear() {
+        this.input.value = '';
+        this._setShowClear(false);
+        this.input.focus();
+    }
+
+    _setShowClear(value) {
+        this.setState({
+            showClear: value
+        })
     }
 
     _inputFocus() {
@@ -57,17 +85,23 @@ class Field extends Component {
 
     render() {
         const {onColorChange, color} = this.props;
+        const {showClear} = this.state;
 
         return (
+
             <div className="field">
                 <input
                     className="field__input"
                     type="text"
                     placeholder="Новая заметка..."
                     ref={ref => { this.input = ref; }}
-                    onKeyDown={(e) => this.handleKeyPress(e)}
+                    onKeyDown={::this.handleKeyPress}
+                    onChange={::this.handleValueCheck}
                 />
-                <div className="field__clear-button" />
+                <div
+                    className={`field__clear-button ${showClear ? 'show' : ''}`}
+                    onClick={::this.handleInputClear}
+                />
                 <div className="field__block">
                     <Settings
                         onColorChange={onColorChange}
