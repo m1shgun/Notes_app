@@ -1,12 +1,32 @@
 .notes-list {
-  display: flex;
-  padding: 20px 0;
-  justify-content: center;
-  flex-wrap: wrap;
+  padding: 20px 20px 0 20px;
+  span {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 
 .notes-list__empty {
   padding: 10px 20px;
   background: $white-color;
   border-radius: 10px;
+}
+
+.notes-enter {
+  opacity: 0;
+}
+
+.notes-enter.notes-enter-active {
+  opacity: 1;
+  transition: opacity $transition-two;
+}
+
+.notes-appear {
+  opacity: 0;
+}
+
+.notes-appear.notes-appear-active {
+  opacity: 1;
+  transition: opacity $transition-one;
 }

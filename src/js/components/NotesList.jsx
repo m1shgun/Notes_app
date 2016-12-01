@@ -1,10 +1,18 @@
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import NotesItem from './NotesItem.jsx';
 
 const NotesList = ({notes, onNoteDelete}) => {
 
     return (
         <div className="notes-list">
+            <ReactCSSTransitionGroup
+                transitionName="notes"
+                transitionAppear={true}
+                transitionAppearTimeout={500}
+                transitionEnterTimeout={300}
+                transitionLeave={false}
+            >
             {
                 notes.length
                     ? notes.map((note) => {
@@ -15,12 +23,14 @@ const NotesList = ({notes, onNoteDelete}) => {
                                 id={note.id}
                                 text={note.text}
                                 style={style}
+                                date={note.date}
                                 onNoteDelete={onNoteDelete}
                             />
                         )
                     })
-                    : <div className="notes-list__empty">Нет заметок...</div>
+                    : <div className="notes-list__empty">Пусто...</div>
             }
+            </ReactCSSTransitionGroup>
         </div>
     )
 };

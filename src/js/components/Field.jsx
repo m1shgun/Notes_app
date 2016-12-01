@@ -4,7 +4,11 @@ import Settings from './Settings.jsx';
 class Field extends Component {
 
     componentDidMount() {
-        this.input.focus();
+        this._inputFocus();
+    }
+
+    componentDidUpdate() {
+        this._inputFocus();
     }
 
     handleNoteAdd() {
@@ -44,8 +48,15 @@ class Field extends Component {
         }
     }
 
+    _inputFocus() {
+        const {notes} = this.props;
+        if (notes.length === 0) {
+            this.input.focus();
+        }
+    }
+
     render() {
-        const {onColorChange} = this.props;
+        const {onColorChange, color} = this.props;
 
         return (
             <div className="field">
@@ -59,7 +70,8 @@ class Field extends Component {
                 <div className="field__clear-button" />
                 <div className="field__block">
                     <Settings
-                        onChangeColor={onColorChange}
+                        onColorChange={onColorChange}
+                        color={color}
                     />
                     <div className="field__buttons">
                         <button className="field__button" onClick={() => this.handleAllDelete()}>Удалить все</button>

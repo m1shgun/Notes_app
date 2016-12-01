@@ -1,6 +1,14 @@
 import React from 'react';
 
-const Search = (props) => {
+const Search = ({notes, onSearchChange}) => {
+
+    const handleInputChange = (e) => {
+        if (e.target.value !== '') {
+            onSearchChange(true);
+        } else {
+            onSearchChange(false);
+        }
+    };
 
     return (
         <div className="search">
@@ -8,7 +16,8 @@ const Search = (props) => {
             <input
                 className="search__field"
                 type="text" placeholder="Поиcк..."
-                disabled="disabled"
+                disabled={notes.length > 0 ? '' : 'disabled'}
+                onChange={handleInputChange}
             />
         </div>
     )

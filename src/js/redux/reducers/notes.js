@@ -16,7 +16,8 @@ const notes = (state = initialState, action) => {
             notes.push({
                 id: ++count,
                 text: action.text,
-                color: action.color
+                color: action.color,
+                date: new Date().toLocaleString()
             });
 
             return [...notes]

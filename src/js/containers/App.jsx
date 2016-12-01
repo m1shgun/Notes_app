@@ -17,22 +17,45 @@ class App extends Component {
         colorActions: PropTypes.object.isRequired
     };
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            search:false
+        }
+    }
+
+    handleSearchChange(value) {
+        this.setState({
+            search: value
+        })
+    }
+
     render() {
         const {notes, color} = this.props;
         const {addNote, deleteNote, deleteAll} = this.props.notesActions;
         const {changeColor} = this.props.colorActions;
+        const {search} = this.state;
 
         return (
             <div className="app">
                 <h1 className="app__title">Notes</h1>
                 <div className="app__content">
-                    <Search />
-                    <Field
-                        onNoteAdd={addNote}
-                        onAllDelete={deleteAll}
-                        onColorChange={changeColor}
-                        color={color}
+                    <Search
+                        notes={notes}
+                        onSearchChange={::this.handleSearchChange}
                     />
+                    {
+                        !search ?
+                        <Field
+                            onNoteAdd={addNote}
+                            onAllDelete={deleteAll}
+                            onColorChange={changeColor}
+                            color={color}
+                            notes={notes}
+                        />
+                        : null
+                    }
+
                     <NotesList
                         notes={notes}
                         onNoteDelete={deleteNote}

@@ -14,6 +14,8 @@
   margin-right: 5px;
   cursor: pointer;
   user-select: none;
+  font-size: 1.1em;
+  font-weight:bold;
 }
 
 .one {
@@ -44,9 +46,26 @@
   background: $settings-color-seven;
 }
 
+.settings__text{
+  opacity: 0;
+  transition: opacity $transition-three;
+  .active & {
+    opacity: 1;
+  }
+}
+
 @media screen and (max-width: $breakpoint-three) {
   .settings {
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media screen and (min-width: $breakpoint-four) {
+  .settings__color {
+    transition: transform $transition-three;
+    &:hover {
+      transform: scale(1.3);
+    }
   }
 }

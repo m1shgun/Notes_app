@@ -1,25 +1,53 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const Settings = ({onColorChange}) => {
+class Settings extends Component {
 
-    const colors = ['one', 'two', 'three', 'four', 'five', 'six', 'seven'];
+    componentDidMount() {
+        this.drawTick();
+    }
 
-    const handleColorChange = (e) => {
-        if (e.target.classList.contains('settings__color')) {
-            e.target.innerHTML = '&#10003';
+    componentDidUpdate() {
+        this.drawTick();
+    }
+
+    drawTick() {
+        const elems = this.settings.children;
+        const {color} = this.props;
+
+        for (let i = 0; i < elems.length; i++) {
+            if (getComputedStyle(elems[i]).backgroundColor === color) {
+                elems[i].classList.add('active');
+            } else {
+                elems[i].classList.remove('active');
+            }
         }
-    };
+    }
 
-    return (
-        <div className="settings" onClick={handleColorChange}>
-            {colors.map((elem, i) => (
-                <div
-                    key={i}
-                    className={`settings__color ${elem}`}
-                />
-            ))}
-        </div>
-    )
-};
+    handleColorChange (e) {
+        const {onColorChange} = this.props;
+        onColorChange(getComputedStyle(e.currentTarget).backgroundColor);
+    }
+
+    render() {
+        const colors = ['one', 'two', 'three', 'four', 'five', 'six', 'seven'];
+
+        return (
+            <div
+                className="settings"
+                ref={(ref) => { this.settings = ref; }}
+            >
+                {colors.map((elem, i) => (
+                    <div
+                        key={i}
+                        className={`settings__color ${elem}`}
+                        onClick={::this.handleColorChange}
+                    >
+                        <div className='settings__text'>&#10003;</div>
+                    </div>
+                ))}
+            </div>
+        )
+    }
+}
 
 export default Settings;
