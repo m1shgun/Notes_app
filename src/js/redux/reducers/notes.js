@@ -4,9 +4,14 @@ import {
     DELETE_ALL
 } from '../constants/notes';
 
-const initialState = [];
+const initialState = localStorage.tasks ? JSON.parse(localStorage.tasks) : [];
 
-let count = 0;
+let count = localStorage.count ? +localStorage.count : 0;
+
+const updateLocalStorage = (notes) => {
+    localStorage.tasks = JSON.stringify(notes);
+    localStorage.count = count;
+};
 
 const notes = (state = initialState, action) => {
     switch (action.type) {
@@ -20,6 +25,7 @@ const notes = (state = initialState, action) => {
                 date: new Date().toLocaleString()
             });
 
+            updateLocalStorage(notes);
             return [...notes]
         }
 
@@ -29,11 +35,14 @@ const notes = (state = initialState, action) => {
                 count = 0
             }
 
+            updateLocalStorage(notes);
             return [...notes];
         }
 
         case DELETE_ALL: {
             count = 0;
+
+            updateLocalStorage([]);
             return [];
         }
 

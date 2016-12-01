@@ -1,7 +1,7 @@
 {
-  "name": "redux_react_app",
+  "name": "notes",
   "version": "1.0.0",
-  "description": "project",
+  "description": "application",
   "main": "index.html",
   "author": "m1shgun",
   "scripts": {

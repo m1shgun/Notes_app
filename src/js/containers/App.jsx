@@ -25,6 +25,16 @@ class App extends Component {
         }
     }
 
+    componentDidMount() {
+        window.onscroll = () => {
+            if (window.pageYOffset > 0) {
+                this.up.classList.add('show');
+            } else {
+                this.up.classList.remove('show');
+            }
+        };
+    }
+
     handleSearchChange(value) {
         this.setState({
             search: value
@@ -55,6 +65,10 @@ class App extends Component {
         }
     }
 
+    goUp() {
+        window.scrollTo(0,0);
+    }
+
     render() {
         const {notes, color} = this.props;
         const {addNote, deleteAll} = this.props.notesActions;
@@ -63,7 +77,7 @@ class App extends Component {
 
         return (
             <div className="app">
-                <h1 className="app__title">NOTES</h1>
+                <h1 className="app__title">Notes</h1>
                 <div className="app__content" ref={ref => { this.content = ref; }}>
                     <Search
                         notes={notes}
@@ -87,6 +101,11 @@ class App extends Component {
                         search={search}
                         notes={!search ? notes : newNotes}
                         onNoteDelete={::this.handleNoteDelete}
+                    />
+                    <div
+                        className="app__up"
+                        ref={ref => { this.up = ref; }}
+                        onClick={this.goUp}
                     />
                 </div>
                 {
