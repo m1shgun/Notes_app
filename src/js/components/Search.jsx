@@ -1,29 +1,64 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Search = ({notes, search, onSearchChange, onNotesSearch}) => {
+class Search extends Component {
 
-    const handleInputChange = (e) => {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showClear: false
+        }
+    }
+
+    handleInputChange(e) {
+        const {onSearchChange, onNotesSearch} = this.props;
         const value = e.target.value;
 
         if (value !== '') {
             onSearchChange(true);
             onNotesSearch(value);
+            this._setShowClear(true);
         } else {
             onSearchChange(false);
+            this._setShowClear(false);
         }
     };
 
-    return (
-        <div className="search">
-            <input
-                className="search__field"
-                type="text" placeholder="Поиcк..."
-                disabled={notes.length > 0 || search ? '' : 'disabled'}
-                onChange={handleInputChange}
-            />
-            <div className="search__icon" />
-        </div>
-    )
-};
+    handleInputClear(e) {
+        const {onSearchChange } = this.props;
+
+        onSearchChange(false);
+        this.input.value = '';
+        this._setShowClear(false);
+        this.input.focus();
+    }
+
+    _setShowClear(value) {
+        this.setState({
+            showClear: value
+        })
+    }
+
+    render() {
+        const {notes, search} = this.props;
+        const {showClear} = this.state;
+
+        return (
+            <div className="search">
+                <input
+                    className="search__field"
+                    type="text" placeholder="Поиcк..."
+                    disabled={notes.length > 0 || search ? '' : 'disabled'}
+                    onChange={::this.handleInputChange}
+                    ref={ref => {this.input = ref;}}
+                />
+                <div className="search__icon"/>
+                <div
+                    className={`search__clear-button ${showClear ? 'show' : ''}`}
+                    onClick={::this.handleInputClear}
+                />
+            </div>
+        )
+    }
+}
 
 export default Search;

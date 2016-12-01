@@ -22,11 +22,10 @@
   background-color: $white-color;
   border-radius: 10px;
   display: flex;
-  padding: 10px 10px 10px 36px;
+  padding: 10px 30px 10px 36px;
   border: none;
   font-size:1em;
   color: $dark-grey-color;
-  box-shadow: $base-box-shadow;
   transition: width $transition-two;
   &[disabled] {
     opacity: .5;
@@ -36,9 +35,29 @@
     width: 100%;
     + .search__icon {
       left: 6px;
+      + .search__clear-button {
+        right: 8px;
+      }
     }
   }
   &::-ms-clear {
     display: none;
+  }
+}
+
+.search__clear-button {
+  position: absolute;
+  display: none;
+  width: 16px;
+  height: 16px;
+  right: 38px;
+  top: 11px;
+  background: url('../../img/del.png') no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: right $transition-two;
+  &.show {
+    display: block;
   }
 }

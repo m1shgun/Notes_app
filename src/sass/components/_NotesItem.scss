@@ -28,7 +28,6 @@
   height: 20px;
   background: url('../img/trash.png') no-repeat;
   background-size: cover;
-
 }
 
 .notes-item__text {
@@ -38,6 +37,7 @@
   font-size: 1.1em;
   font-weight: bold;
   color: $dark-grey-color;
+  overflow-wrap: break-word;
 }
 
 @media screen and (min-width: $breakpoint-four) {
