@@ -16,6 +16,12 @@
   user-select: none;
   font-size: 1.1em;
   font-weight:bold;
+  &:not(.mobile) {
+    transition: transform $transition-three;
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
 }
 
 .one {
@@ -58,14 +64,5 @@
   .settings {
     width: 100%;
     justify-content: center;
-  }
-}
-
-@media screen and (min-width: $breakpoint-four) {
-  .settings__color {
-    transition: transform $transition-three;
-    &:hover {
-      transform: scale(1.3);
-    }
   }
 }

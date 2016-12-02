@@ -1,7 +1,6 @@
 $breakpoint-one: 371px;
 $breakpoint-two: 427px;
 $breakpoint-three: 609px;
-$breakpoint-four: 769px;
 
 $base-bg-color: rgb(180, 193, 241);
 $base-color: rgb(119, 119, 119);
@@ -30,6 +29,7 @@ $field-max-width: 660px;
 $transition-one: 0.5s ease-in;
 $transition-two: 0.3s ease-in;
 $transition-three: 0.1s ease-in;
+$transition-special: 0.3s cubic-bezier(1,0,.54,.54);
 
 $title-font-family: 'Codystar', cursive;
 $note-font-family: 'Bad Script', cursive;
@@ -38,3 +38,6 @@ $border: 1px dashed $border-color;
 
 $note-box-shadow: 0 0 10px rgba(0,0,0,0.5);
 
+$field-button-bg-color: rgb(131, 146, 219);
+$field-button-shadow: 0 5px 0 rgb(93, 104, 159);
+$field-button-shadow-active: 0 2px 0 rgb(93, 104, 159);

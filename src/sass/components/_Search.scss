@@ -13,7 +13,7 @@
   background-size: cover;
   top: 6px;
   left: 34px;
-  transition: left $transition-two;
+  transition: all $transition-special;
 }
 
 .search__field {
@@ -26,17 +26,21 @@
   border: none;
   font-size:1em;
   color: $dark-grey-color;
-  transition: width $transition-two;
+  box-shadow: $base-box-shadow;
+  transition: all $transition-special;
   &[disabled] {
     opacity: .5;
   }
   &:focus {
     outline: none;
     width: 100%;
+    transition: all 0.3s cubic-bezier(0,.99,0,.83);
     + .search__icon {
       left: 6px;
+      transition: all 0.3s cubic-bezier(0,.99,0,.83);
       + .search__clear-button {
         right: 8px;
+        transition: all 0.3s cubic-bezier(0,.99,0,.83);
       }
     }
   }
@@ -56,8 +60,14 @@
   background-size: cover;
   cursor: pointer;
   border-radius: 50%;
-  transition: right $transition-two;
+  transition: all $transition-special;
   &.show {
     display: block;
+  }
+}
+
+@media screen and (max-width: $breakpoint-two) {
+  .search__field {
+    box-shadow: none;
   }
 }

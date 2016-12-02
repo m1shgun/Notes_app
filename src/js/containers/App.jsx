@@ -22,7 +22,10 @@ class App extends Component {
         this.state = {
             newNotes: [],
             search: false
-        }
+        };
+
+        //to remove :hover on mobile devices
+        this.mobile = !!('ontouchstart' in window);
     }
 
     componentDidMount() {
@@ -33,7 +36,7 @@ class App extends Component {
                 this.up.classList.remove('show');
             }
         };
-    }
+}
 
     handleSearchChange(value) {
         this.setState({
@@ -45,7 +48,7 @@ class App extends Component {
         const {notes} = this.props;
 
         this.setState({
-            newNotes: notes.filter(note => note.text.indexOf(value) !== -1)
+            newNotes: notes.filter(note => note.text.toLowerCase().indexOf(value.toLowerCase()) !== -1)
         });
     }
 
@@ -60,7 +63,7 @@ class App extends Component {
             const newNotes = notes.filter(note => note.id !== id);
 
             this.setState({
-                newNotes: newNotes.filter(note => note.text.indexOf(search.value) !== -1)
+                newNotes: newNotes.filter(note => note.text.toLowerCase().indexOf(search.value.toLowerCase()) !== -1)
             });
         }
     }
@@ -93,6 +96,7 @@ class App extends Component {
                             onNoteAdd={addNote}
                             onAllDelete={deleteAll}
                             onColorChange={changeColor}
+                            mobile={this.mobile}
                         />
                         : null
                     }
@@ -100,6 +104,7 @@ class App extends Component {
                     <NotesList
                         search={search}
                         notes={!search ? notes : newNotes}
+                        mobile={this.mobile}
                         onNoteDelete={::this.handleNoteDelete}
                     />
                     <div

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import NotesItem from './NotesItem.jsx';
 
-const NotesList = ({notes, search, onNoteDelete}) => {
+const NotesList = ({notes, search, mobile, onNoteDelete}) => {
 
     return (
         <div className="notes-list">
@@ -24,6 +24,7 @@ const NotesList = ({notes, search, onNoteDelete}) => {
                                 text={note.text}
                                 style={style}
                                 date={note.date}
+                                mobile={mobile}
                                 onNoteDelete={onNoteDelete}
                             />
                         )

@@ -30,6 +30,7 @@ class Settings extends Component {
 
     render() {
         const colors = ['one', 'two', 'three', 'four', 'five', 'six', 'seven'];
+        const {mobile} = this.props;
 
         return (
             <div
@@ -39,7 +40,7 @@ class Settings extends Component {
                 {colors.map((elem, i) => (
                     <div
                         key={i}
-                        className={`settings__color ${elem}`}
+                        className={`settings__color ${elem} ${mobile ? 'mobile' : ''}`}
                         onClick={::this.handleColorChange}
                     >
                         <div className='settings__text'>&#10003;</div>

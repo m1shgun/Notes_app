@@ -12,17 +12,17 @@ class NotesItem extends Component {
     }
 
     render() {
-        const {id, text, style, date, onNoteDelete} = this.props;
+        const {id, text, style, date, mobile, onNoteDelete} = this.props;
 
         return (
-            <div className="notes-item"
+            <div className={`notes-item ${mobile ? 'mobile' : ''}`}
                  id={id}
                  style={style}
             >
                 <div className="notes-item__date">
                     <div>{date}</div>
                 </div>
-                <div className="notes-item__delete" onClick={() => onNoteDelete(id)}/>
+                <div className={`notes-item__delete ${mobile ? 'mobile' : ''}`} onClick={() => onNoteDelete(id)}/>
                 <div
                     className="notes-item__text"
                     ref={ref => { this.text = ref; }}

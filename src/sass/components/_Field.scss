@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  transition: box-shadow $transition-special;
 }
 
 .field__input {
@@ -44,6 +45,12 @@
   &.show {
     display: block;
   }
+  &:not(.mobile) {
+    transition: transform .3s ease;
+    &:hover {
+      transform: rotate(180deg);
+    }
+  }
 }
 
 .field__block {
@@ -67,16 +74,16 @@
   align-self: flex-end;
   cursor: pointer;
   border-radius: 6px;
-  background-color: rgb(131, 146, 219);
-  color: #fff;
+  background-color: $field-button-bg-color;
+  color: $white-color;
   border: 0;
-  box-shadow: 0 5px 0 rgb(93, 104, 159);
+  box-shadow: $field-button-shadow;
   font-size: 1em;
   font-weight: bold;
   user-select: none;
   &:active {
     transform: translateY(3px);
-    box-shadow: 0 2px 0 rgb(93, 104, 159);
+    box-shadow: $field-button-shadow-active;
   }
   &:focus {
     outline: none;
@@ -101,15 +108,6 @@
     margin-top: 20px;
     width: 100%;
     justify-content: center;
-  }
-}
-
-@media screen and (min-width: $breakpoint-four) {
-  .field__clear-button {
-    transition: transform .3s ease;
-    &:hover {
-      transform: rotate(180deg);
-    }
   }
 }
 

@@ -84,7 +84,7 @@ class Field extends Component {
     }
 
     render() {
-        const {onColorChange, color} = this.props;
+        const {onColorChange, color, mobile} = this.props;
         const {showClear} = this.state;
 
         return (
@@ -99,13 +99,14 @@ class Field extends Component {
                     onChange={::this.handleValueCheck}
                 />
                 <div
-                    className={`field__clear-button ${showClear ? 'show' : ''}`}
+                    className={`field__clear-button ${showClear ? 'show' : ''} ${mobile ? 'mobile' : ''}`}
                     onClick={::this.handleInputClear}
                 />
                 <div className="field__block">
                     <Settings
                         onColorChange={onColorChange}
                         color={color}
+                        mobile={mobile}
                     />
                     <div className="field__buttons">
                         <button className="field__button" onClick={() => this.handleAllDelete()}>Удалить все</button>

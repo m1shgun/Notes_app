@@ -23,13 +23,13 @@ class Search extends Component {
         }
     };
 
-    handleInputClear(e) {
+    handleInputClear() {
         const {onSearchChange } = this.props;
 
+        this.input.focus();
         onSearchChange(false);
         this.input.value = '';
         this._setShowClear(false);
-        this.input.focus();
     }
 
     _setShowClear(value) {

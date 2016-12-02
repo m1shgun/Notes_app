@@ -5,6 +5,12 @@
   margin: 5px;
   padding: 40px 20px 20px 20px;
   overflow: hidden;
+  &:not(.mobile) {
+    transition: box-shadow $transition-three;
+    &:hover {
+      box-shadow: $note-box-shadow;
+    }
+  }
 }
 
 .notes-item__date {
@@ -28,6 +34,12 @@
   height: 20px;
   background: url('../img/trash.png') no-repeat;
   background-size: cover;
+  &:not(.mobile) {
+    transition: transform $transition-three;
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
 }
 
 .notes-item__text {
@@ -38,22 +50,4 @@
   font-weight: bold;
   color: $dark-grey-color;
   overflow-wrap: break-word;
-}
-
-@media screen and (min-width: $breakpoint-four) {
-  .notes-item__delete {
-    transition: transform $transition-three;
-    &:hover {
-      transform: scale(1.3);
-    }
-  }
-}
-
-@media screen and (min-width: $breakpoint-four)  {
-  .notes-item {
-    transition: box-shadow $transition-three;
-    &:hover {
-      box-shadow: $note-box-shadow;
-    }
-  }
 }
