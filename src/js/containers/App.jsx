@@ -36,7 +36,7 @@ class App extends Component {
                 this.up.classList.remove('show');
             }
         };
-}
+    }
 
     handleSearchChange(value) {
         this.setState({
