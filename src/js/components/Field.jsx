@@ -35,7 +35,7 @@ class Field extends Component {
     handleKeyPress(e) {
         const input = this.input;
 
-        if (!/^\s*$/.test(input.value) && e.keyCode === 13) {
+        if (!/^\s*$/.test(input.value) && (e.keyCode || e.which) === 13) {
             const {onNoteAdd, color} = this.props;
 
             onNoteAdd(input.value, color);
