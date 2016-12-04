@@ -1,12 +1,8 @@
 @import 'abstracts/variables';
-@import 'abstracts/mixins';
-
-/*@import 'vendors/bootstrap';*/
 
 @import 'base/reset';
+@import 'base/typography';
 @import 'base/base';
-
-/*@import 'partials/buttons';*/
 
 @import 'containers/App';
 
