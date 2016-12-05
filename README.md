@@ -1,13 +1,13 @@
-# SPA приложение Notes
+# SPA Notes
 
 ![Notes](/src/img/icon.png)
 
 Development:
-`
+```
 npm run dev
-`
+```
 
 Production:
-`
+```
 npm run prod
-`
+```
